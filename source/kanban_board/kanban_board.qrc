@@ -1,0 +1,84 @@
+<RCC>
+    <qresource prefix="/kanban_board">
+        <file>content/SmallText.qml</file>
+        <file>content/TextButton.qml</file>
+        <file>content/pics/arrow-down.png</file>
+        <file>content/pics/arrow-up.png</file>
+        <file>content/pics/fruit-salad.jpg</file>
+        <file>content/pics/hamburger.jpg</file>
+        <file>content/pics/lemonade.jpg</file>
+        <file>content/pics/list-delete.png</file>
+        <file>content/pics/minus-sign.png</file>
+        <file>content/pics/moreDown.png</file>
+        <file>content/pics/moreUp.png</file>
+        <file>content/pics/pancakes.jpg</file>
+        <file>content/pics/plus-sign.png</file>
+        <file>content/pics/vegetable-soup.jpg</file>
+        <file>content/KanbanList.qml</file>
+        <file>content/KanbanText.qml</file>
+        <file>content/pics/cover 83 YA.png</file>
+        <file>content/pics/cover 84 YA.png</file>
+        <file>content/pics/cover A994XA.png</file>
+        <file>content/pics/cover A995XB.png</file>
+        <file>content/pics/cover A996XB.png</file>
+        <file>content/pics/cover A997XA.png</file>
+        <file>content/pics/cover A998XA.png</file>
+        <file>content/pics/cover D583.png</file>
+        <file>content/pics/cover D584.png</file>
+        <file>content/pics/cover D585.png</file>
+        <file>content/pics/cover D586.png</file>
+        <file>content/pics/cover D757.png</file>
+        <file>content/pics/cover D758.png</file>
+        <file>content/pics/extra 83 YA.png</file>
+        <file>content/pics/extra 84 YA.png</file>
+        <file>content/pics/extra A993XA.png</file>
+        <file>content/pics/extra A994XA.png</file>
+        <file>content/pics/extra A995XB.png</file>
+        <file>content/pics/extra A996XB.png</file>
+        <file>content/pics/extra A997XA.png</file>
+        <file>content/pics/extra A998XA.png</file>
+        <file>content/pics/extra D583.png</file>
+        <file>content/pics/extra D584.png</file>
+        <file>content/pics/extra D585.png</file>
+        <file>content/pics/extra D586.png</file>
+        <file>content/pics/extra D757.png</file>
+        <file>content/pics/extra D758.png</file>
+        <file>content/pics/cover A993XA.png</file>
+        <file>content/pics/armrest A997XA.png</file>
+        <file>content/pics/armrest side 84 YA.png</file>
+        <file>content/pics/armrest side 96 YA.png</file>
+        <file>content/pics/armrest side A994XA.png</file>
+        <file>content/pics/armrest side A996XB.png</file>
+        <file>content/pics/armrest side A998XA.png</file>
+        <file>content/pics/armrest side D584.png</file>
+        <file>content/pics/armrest side D586.png</file>
+        <file>content/pics/armrest side D758.png</file>
+        <file>content/pics/armrest side 83 YA.png</file>
+        <file>content/pics/armrest side 95 YA.png</file>
+        <file>content/pics/armrest side A993XA.png</file>
+        <file>content/pics/armrest side A995XB.png</file>
+        <file>content/pics/armrest side A997XA.png</file>
+        <file>content/pics/armrest side D583.png</file>
+        <file>content/pics/armrest side D585.png</file>
+        <file>content/pics/armrest side D757.png</file>
+        <file>content/pics/armrest 95 YA.png</file>
+        <file>content/pics/armrest A995XB.png</file>
+        <file>content/pics/armrest 96 YA.png</file>
+        <file>content/pics/armrest A996XB.png</file>
+        <file>content/pics/armrest A998XA.png</file>
+        <file>content/pics/armrest A994XA.png</file>
+        <file>content/pics/armrest A993XA.png</file>
+        <file>content/pics/armrest D586.png</file>
+        <file>content/pics/armrest D758.png</file>
+        <file>content/pics/armrest D585.png</file>
+        <file>content/pics/armrest D757.png</file>
+        <file>content/pics/armrest 83 YA.png</file>
+        <file>content/pics/armrest D583.png</file>
+        <file>content/pics/armrest 84 YA.png</file>
+        <file>content/pics/armrest D584.png</file>
+        <file>content/pics/cover 95 YA.png</file>
+        <file>content/pics/extra 95 YA.png</file>
+        <file>content/pics/cover 96 YA.png</file>
+        <file>content/pics/extra 96 YA.png</file>
+    </qresource>
+</RCC>
