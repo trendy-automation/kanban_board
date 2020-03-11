@@ -1,5 +1,5 @@
 #QT += core network
-include(../../../lib/snap7/snap7.pri)
+include(../../../../lib/snap7/snap7.pri)
 
 INCLUDEPATH += $$PWD
 

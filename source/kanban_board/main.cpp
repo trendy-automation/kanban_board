@@ -58,12 +58,12 @@ int main(int argc, char *argv[])
     context->setContextProperty("kanbanCount", KANBAN_COUNT);
     engine.load(QUrl("qrc:/kanban_board.qml"));
     qDebug()<<"plcPartner status:"<<plcPartner->getStatus()<<plcStatusList.at(plcPartner->getStatus());
-//    emit kanbanApp.kanbanProduced(14);
-//    emit kanbanApp.kanbanProduced(14);
-//    emit kanbanApp.kanbanProduced(14);
-//    emit kanbanApp.kanbanProduced(13);
-//    emit kanbanApp.kanbanProduced(13);
-//    emit kanbanApp.kanbanProduced(15);
+    emit kanbanApp.kanbanProduced(14);
+    emit kanbanApp.kanbanProduced(14);
+    emit kanbanApp.kanbanProduced(14);
+    emit kanbanApp.kanbanProduced(13);
+    emit kanbanApp.kanbanProduced(13);
+    emit kanbanApp.kanbanProduced(15);
     if (engine.rootObjects().isEmpty())
         return -1;
 

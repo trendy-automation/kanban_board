@@ -1,0 +1,6 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+<file alias="kanban_board.qml">F:/Qt_projects/kanban_board/source/kanban_board/kanban_board.qml</file>
+<file alias="fonts/fontello.ttf">F:/Qt_projects/kanban_board/source/kanban_board/fonts/fontello.ttf</file>
+</qresource>
+</RCC>

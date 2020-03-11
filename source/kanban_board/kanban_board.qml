@@ -221,7 +221,23 @@ ApplicationWindow {
 //                            }
             //! [3]
                         }
-
+                        QtObject {
+                                id: backend
+                                property string modifier
+                            }
+                        ComboBox {
+                            textRole: "sebango"
+                            valueRole: "sebango"
+                            // When an item is selected, update the backend.
+                            onActivated: backend.modifier = currentValue
+                            // Set the initial currentIndex to the value stored in the backend.
+                            Component.onCompleted: currentIndex = indexOfValue(backend.modifier)
+                            model: kanbanBase
+                            opacity: kanban.detailsOpacity
+                            //filterRoleName: textRole
+                            //filterPattern: model.sebango
+                            //filterCaseSensitivity: Qt.CaseInsensitive
+                        }
 
                         // A button to close the detailed view, i.e. set the state back to default ('').
                         TextButton {
