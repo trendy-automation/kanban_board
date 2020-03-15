@@ -5,6 +5,7 @@
 
 #include <QObject>
 #include <QDebug>
+#include <QSettings>
 
 class KanbanApp : public QObject
 {
@@ -19,8 +20,11 @@ signals:
 
 public slots:
     void newKanbanReady(int kanbanIndex);
+    void setValue(const QString &key, const QVariant &value) ;
+    QVariant value(const QString &key, const QVariant &defaultValue = QString("{}")) const;
 
-//private:
+private:
+    QSettings *settings;
 
 };
 

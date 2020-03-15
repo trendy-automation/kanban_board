@@ -80,5 +80,7 @@
         <file>content/pics/extra 95 YA.png</file>
         <file>content/pics/cover 96 YA.png</file>
         <file>content/pics/extra 96 YA.png</file>
+        <file>content/StockList.qml</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

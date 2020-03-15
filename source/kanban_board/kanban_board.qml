@@ -4,6 +4,8 @@ import QtQuick.Controls.Material 2.12
 import Qt.labs.settings 1.0
 import QtQuick.Layouts 1.12
 import QtQuick.Dialogs 1.3
+import org.qtproject.example 1.0
+import QtQml 2.14
 import "kanban_board/content"
 
 
@@ -33,7 +35,7 @@ ApplicationWindow {
                 if (!checked) {
                     undoTimer.stop()
                     swipe.close()
-                    model.blocked=false
+                    //model.blocked=false
                 }
             }
             //text: model.alias
@@ -225,19 +227,16 @@ ApplicationWindow {
                                 id: backend
                                 property string modifier
                             }
-                        ComboBox {
-                            textRole: "sebango"
-                            valueRole: "sebango"
-                            // When an item is selected, update the backend.
-                            onActivated: backend.modifier = currentValue
-                            // Set the initial currentIndex to the value stored in the backend.
-                            Component.onCompleted: currentIndex = indexOfValue(backend.modifier)
-                            model: kanbanBase
-                            opacity: kanban.detailsOpacity
-                            //filterRoleName: textRole
-                            //filterPattern: model.sebango
-                            //filterCaseSensitivity: Qt.CaseInsensitive
-                        }
+//                        ComboBox {
+//                            textRole: "sebango"
+//                            valueRole: "sebango"
+//                            // When an item is selected, update the backend.
+//                            onActivated: backend.modifier = currentValue
+//                            // Set the initial currentIndex to the value stored in the backend.
+//                            Component.onCompleted: currentIndex = indexOfValue(backend.modifier)
+//                            model: kanbanBase
+//                            opacity: kanban.detailsOpacity
+//                        }
 
                         // A button to close the detailed view, i.e. set the state back to default ('').
                         TextButton {
@@ -318,12 +317,13 @@ ApplicationWindow {
                 SwipeDelegate.onClicked: {
                     //console.log("SwipeDelegate.onClicked")
                     delegate.swipe.close()
-                    model.blocked=false
+                    undoTimer.stop()
+                    //model.blocked=false
                 }
                 SwipeDelegate.onPressedChanged: {
                     //console.log("SwipeDelegate.onPressedChanged")
                     undoTimer.stop()
-                    model.blocked=false
+                    //model.blocked=false
                   }
             }
             //! [delegate]
@@ -331,11 +331,11 @@ ApplicationWindow {
             //! [removal]
             Timer {
                 id: undoTimer
-                interval: 3600
+                interval: 1500
                 onTriggered: {
                     //console.log("undoTimer.onTriggered")
                     kanbanApp.newKanbanReady(model.kanbanIndex)
-                    kanbanModel.remove(index)
+                    batchModel.remove(index)
                 }
             }
             swipe.onCompleted: {
@@ -344,7 +344,7 @@ ApplicationWindow {
                     deleteDialog.open()
                 }
                 else {
-                    model.blocked=true
+                    //model.blocked=true
                     undoTimer.start()
                 }
             }
@@ -408,47 +408,79 @@ ApplicationWindow {
 //                    }
 //                }
                 onYes: {
-                    console.log("KanbanItem " + kanbanModel.get(index).kanban + " deleted")
-                    kanbanModel.remove(index)
+                    console.log("KanbanItem " + batchModel.get(index).kanban + " deleted")
+                    batchModel.remove(index)
                 }
                 onNo: {
                     delegate.swipe.close()
                 }
             }
         }
+        SortFilterProxyModel {
+            id: proxyStockModel
+            source: proxyPosStockModel.count > 0 ? proxyPosStockModel : null
+
+            sortOrder: Qt.AscendingOrder
+            sortCaseSensitivity: Qt.CaseInsensitive
+            sortRole: proxyPosStockModel.count > 0 ? "dateTime" : ""
+
+            filterRole: "count"
+            filterString: "([5-9]$|\\d{2,}$)" //  "([" + kanbanCount-1 + "-9]$|\\d{2,}$)"
+            filterSyntax: SortFilterProxyModel.RegExp
+            filterCaseSensitivity: Qt.CaseInsensitive
+            function countParts() {
+                    console.log("countParts")
+                    var count = 0
+                    for(var i = 0; i < proxyStockModel.count; ++i){
+                        console.log("countParts " + parseInt(proxyStockModel.get(i).count))
+                        count=count+parseInt(proxyStockModel.get(i).count)
+                    }
+                    console.log("countParts " + count + " proxyPosStockModel.posFilterValue " + proxyPosStockModel.posFilterValue)
+                    return count
+                }
+            }
+        SortFilterProxyModel {
+            id: proxyPosStockModel
+            property int posFilterValue: 1
+            source: stockModel.count > 0 ? stockModel : null
+
+            filterRole: "pos"
+            filterString: posFilterValue
+            filterSyntax: SortFilterProxyModel.FixedString
+            filterCaseSensitivity: Qt.CaseInsensitive
+            function setFilterValue (filterValue) {
+                proxyPosStockModel.source = null
+                proxyPosStockModel.posFilterValue=filterValue
+                proxyPosStockModel.source = stockModel
+            }
+        }
 
         model: ListModel {
-            id: kanbanModel
-            function addKanban(kanbanItem,id) {
-                if(kanbanItem){
-                    for(var i = 0; i < kanbanModel.count; ++i)
-                        if (kanbanModel.get(i).kanban===kanbanItem.kanban)
-                            if (kanbanModel.get(i).count<kanbanCount){
-                                if (!kanbanModel.get(i).blocked) {
-                                    kanbanModel.get(i).count=kanbanModel.get(i).count+1
-                                    console.log("kanban " + kanbanModel.get(i).kanban + " add 1 part")
-                                    return
-                                } else
-                                    console.log("kanban " + kanbanModel.get(i).kanban + " blocked")
-                            }
-                    kanbanItem.count=1
-                    kanbanItem.blocked=false
-                    kanbanModel.append(kanbanItem)
-                    console.log("kanbanItem " + id + " appended")
-                } else
-                    console.log("wrong kanban " + id)
+            id: batchModel
+            function saveBatchModel() {
+                if(!settingsReading){
+                    var datamodel = []
+                    for (var i = 0; i < batchModel.count; ++i)
+                        datamodel.push(batchModel.get(i))
+                    kanbanApp.setValue('batchModel',JSON.stringify(datamodel))
+                }
+            }
+            function loadBatchModel() {
+                batchModel.clear()
+                settingsReading=true
+                var datamodel = JSON.parse(kanbanApp.value('batchModel'))
+                for (var i = 0; i < datamodel.length; ++i)
+                    batchModel.append(datamodel[i])
+                settingsReading=false
             }
             onDataChanged: {
-                //console.log("onDataChanged")
-                saveModel()
+                saveBatchModel()
             }
             onRowsRemoved: {
-                //console.log("onRowsRemoved")
-                saveModel()
+                saveBatchModel()
             }
             onRowsInserted: {
-                //console.log("onRowsInserted")
-                saveModel()
+                saveBatchModel()
             }
 
         }
@@ -468,9 +500,6 @@ ApplicationWindow {
             }
         }
         //! [transitions]
-
-
-
 
         ScrollIndicator.vertical: ScrollIndicator { }
     }
@@ -498,6 +527,7 @@ ApplicationWindow {
           for(var i = 0; i < kanbanBase.count; ++i)
               if (kanbanBase.get(i).kanbanIndex===kanbanIndex)
                   return kanbanBase.get(i)
+          console.log("kanban not found " +kanbanIndex)
           return null;
         }
         function indexOf(someInfo) {
@@ -510,52 +540,188 @@ ApplicationWindow {
             for(var i = 0; i < kanbanBase.count; ++i)
                 if (kanbanBase.get(i).kanban===someInfo)
                     return kanbanBase.get(i)
+          console.log("kanban not found " +someInfo)
           return null;
         }
     }
+
+    Timer {
+        id: checkBatchTimer
+        interval: 1000
+        onTriggered: {
+            stockModel.checkBatch()
+        }
+    }
+
+    StockList {
+                id: stockModel
+                function addKanban(kanbanItem,id) {
+                    if(kanbanItem){
+                        for(var i = 0; i < stockModel.count; ++i)
+                            if (stockModel.get(i).kanban===kanbanItem.kanban){
+                                //if (stockModel.get(i).count<kanbanCount){
+                                //    if (!stockModel.get(i).blocked) {
+                                        stockModel.get(i).count=stockModel.get(i).count+1
+                                        if(!settingsReading || stockModel.get(i).dateTime==='')
+                                            stockModel.get(i).dateTime = Qt.formatDateTime(new Date(), "yy.MM.dd hh:mm:ss")
+                                        console.log("kanban " + stockModel.get(i).kanban + " add 1 part")
+                                        //checkBatch()
+                                        checkBatchTimer.start()
+                                        return
+                                //    } else
+                                //        console.log("kanban " + stockModel.get(i).kanban + " blocked")
+                                //}
+                            }
+
+                        kanbanItem.count=1
+                        //kanbanItem.blocked=false
+                        if(!settingsReading || kanbanItem.dateTime==='')
+                            kanbanItem.dateTime = Qt.formatDateTime(new Date(), "yy.MM.dd hh:mm:ss")
+                        //console.log('kanbanItem'+JSON.stringify(kanbanItem))
+                        stockModel.append(kanbanItem)
+                        console.log("kanbanItem " + id + " appended")
+                    } else
+                        console.log("wrong kanban " + id)
+                }
+                function checkBatch() {
+                    console.log("checkBatch")
+                    //proxyPosStockModel.setFilterValue(0)
+                    //proxyPosStockModel.setFilterValue(1)
+                    //proxyPosStockModel.source = null
+                    proxyPosStockModel.posFilterValue=1
+                    //proxyPosStockModel.source = stockModel
+                    if (proxyStockModel.countParts()>=(kanbanCount*6)){
+                        //proxyPosStockModel.source = null
+                        //proxyPosStockModel.posFilterValue=2
+                        //proxyPosStockModel.source = stockModel
+                        proxyPosStockModel.setFilterValue(2)
+                        if (proxyStockModel.countParts()>=(kanbanCount*6))
+                            //{console.log(0)}
+                            createBatch(1)
+                    }
+                    //proxyPosStockModel.source = null
+                    //proxyPosStockModel.posFilterValue=3
+                    //proxyPosStockModel.source = stockModel
+                    proxyPosStockModel.setFilterValue(3)
+                    console.log()
+                    if (proxyStockModel.countParts()>=(kanbanCount*6)){
+                        //proxyPosStockModel.source = null
+                        //proxyPosStockModel.posFilterValue=4
+                        //proxyPosStockModel.source = stockModel
+                        proxyPosStockModel.setFilterValue(4)
+                        if (proxyStockModel.countParts()>=(kanbanCount*6))
+                            //{console.log(2)}
+                            createBatch(3)
+                    }
+                }
+
+                function createBatch(pos0) {
+                    console.log("createBatch " + pos0)
+                    for(var i = 0; i < 12; ++i){
+                        proxyPosStockModel.setFilterValue(pos0 + i % 2)
+                        console.log("filterValue=" + proxyPosStockModel.posFilterValue)
+                        console.log("proxyStockModel.countParts()=" + proxyStockModel.countParts())
+                        //proxyPosStockModel.posFilterValue=pos0 + i % 2
+                        if(proxyStockModel.count>0){
+                            var kanbanItem = proxyStockModel.get(0)
+                            console.log("kanbanItem " + kanbanItem.pos + " " +
+                                         kanbanItem.kanban + " " +
+                                         kanbanItem.dateTime)
+                            for(var j = 0; j < stockModel.count; ++j){
+                                if (kanbanItem.kanban===stockModel.get(j).kanban &&
+                                    kanbanItem.dateTime===stockModel.get(j).dateTime){
+                                    stockModel.get(j).count=kanbanItem.count-kanbanCount
+                                }
+                            }
+                            kanbanItem.count=kanbanCount
+                            batchModel.append(kanbanItem)
+                        } else console.log("kanbanItem not fount in proxyStockModel pos=" + proxyPosStockModel.posFilterValue)
+                    }
+                }
+
+                function countKanban(kanban) {
+                        var count = 0
+                        for(var i = 0; i < stockModel.count; ++i)
+                            if (stockModel.get(i).kanban===kanban)
+                                count=count+stockModel.get(i).count
+                        return count
+                }
+
+                function saveStockModel() {
+                    if(!settingsReading){
+                        //var datamodel = []
+                        for (var i = 0; i < kanbanBase.count; ++i){
+                            //datamodel.push(stockModel.get(i))
+                            //datamodel.push({kanban:kanbanBase.get(i).kanban,count: stockModel.countKanban(kanbanBase.get(i).kanban)})
+                            kanbanApp.setValue('item'+i,JSON.stringify({kanban:  kanbanBase.get(i).kanban,
+                                                                        dateTime: kanbanBase.get(i).dateTime,
+                                                                        sebango: kanbanBase.get(i).sebango,
+                                                                        pos: kanbanBase.get(i).pos,
+                                                                        count:   stockModel.countKanban(kanbanBase.get(i).kanban)}))
+                        }
+                        //datastore = JSON.stringify(datamodel)
+                        //kanbanApp.setValue('shopstock',datastore)
+                    }
+                }
+
+                function loadStockModel() {
+                    stockModel.clear()
+                    settingsReading=true
+                    var i = 0
+                    while (kanbanApp.value('item'+i)!=='{}'){
+                        var item = JSON.parse(kanbanApp.value('item'+i))
+                        for (var j = 0; j < item.count; ++j)
+                            stockModel.addKanban(kanbanBase.indexOf(item.kanban.toString().trim()),item.kanban)
+                        ++i
+                    }
+                    settingsReading=false
+                }
+
+                onDataChanged: {
+                    saveStockModel()
+                }
+                onRowsRemoved: {
+                    saveStockModel()
+                }
+                onRowsInserted: {
+                    saveStockModel()
+                }
+
+    }
+
     Connections {
         target: kanbanApp
         onKanbanProduced: {
             //console.log("App data " + kanbanIndex + " recived")
-            kanbanModel.addKanban(kanbanBase.at(kanbanIndex),kanbanIndex)
+            stockModel.addKanban(kanbanBase.at(kanbanIndex),kanbanIndex)
         }
     }
     Connections {
         target: plcPartner
         onDataReceived: {
             //console.log("PLC data " + data + " recived")
-            kanbanModel.addKanban(kanbanBase.indexOf(data.toString().trim()),data)
+            stockModel.addKanban(kanbanBase.indexOf(data.toString().trim()),data)
         }
     }
     Connections {
         target: udpReceiver
         onDataReceived: {
             //console.log("PLC data " + data + " recived")
-            kanbanModel.addKanban(kanbanBase.indexOf(data.toString().trim()),data)
+            stockModel.addKanban(kanbanBase.indexOf(data.toString().trim()),data)
         }
     }
 
 
     Component.onCompleted: {
-        if (datastore) {
-            kanbanModel.clear()
-            settingsReading=true
-            var datamodel = JSON.parse(datastore)
-            for (var i = 0; i < datamodel.length; ++i)
-                kanbanModel.append(datamodel[i])
-            settingsReading=false
-        }
+        stockModel.loadStockModel()
+        batchModel.loadBatchModel()
+        stockModel.saveStockModel()
     }
+
+
 
     Settings {
       property alias datastore: window.datastore
-    }
-    function saveModel() {
-        if(!settingsReading){
-            var datamodel = []
-                for (var i = 0; i < kanbanModel.count; ++i) datamodel.push(kanbanModel.get(i))
-                    datastore = JSON.stringify(datamodel)
-        }
     }
 
 //    onClosing: {

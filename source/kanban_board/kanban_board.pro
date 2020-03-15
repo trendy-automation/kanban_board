@@ -11,9 +11,9 @@ include(plc_station/plc_station.pri)
 include(udpreceiver/udpreceiver.pri)
 #include(../../../../shared_classes/qtxlsx/qtxlsx.pri)
 
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../../shared_classes/qtxlsx/build-qtxlsx-Release/release/ -lQtXlsx
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../../shared_classes/qtxlsx/build-qtxlsx-Release/release/ -lQtXlsx
-else:unix: LIBS += -L$$OUT_PWD/../../../shared_classes/qtxlsx/build-qtxlsx-Release/ -lQtXlsx
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../shared_classes/qtxlsx/build-qtxlsx-Release/release/ -lQtXlsx
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../shared_classes/qtxlsx/build-qtxlsx-Release/release/ -lQtXlsx
+else:unix: LIBS += -L$$OUT_PWD/../../shared_classes/qtxlsx/build-qtxlsx-Release/ -lQtXlsx
 
 INCLUDEPATH += $$PWD/../../../../../shared_classes/qtxlsx
 DEPENDPATH += $$PWD/../../../../../shared_classes/qtxlsx
@@ -21,7 +21,7 @@ DEPENDPATH += $$PWD/../../../../../shared_classes/qtxlsx
 CONFIG(release, debug|release){BUILD_TYPE=release}
 CONFIG(debug, debug|release){BUILD_TYPE=debug}
 
-copydata.commands = $(COPY_FILE) \"$$shell_path($$clean_path($$OUT_PWD/../../../shared_classes/qtxlsx/build-qtxlsx-Release/$$BUILD_TYPE/QtXlsx.dll))\" \"$$shell_path($$OUT_PWD/$$BUILD_TYPE)\"
+copydata.commands = $(COPY_FILE) \"$$shell_path($$clean_path($$OUT_PWD/../../shared_classes/qtxlsx/build-qtxlsx-Release/$$BUILD_TYPE/QtXlsx.dll))\" \"$$shell_path($$OUT_PWD/$$BUILD_TYPE)\"
 first.depends = $(first) copydata
 export(first.depends)
 export(copydata.commands)
@@ -51,7 +51,8 @@ QT      += core gui network widgets concurrent
 
 SOURCES += \
     kanbanApp.cpp \
-    main.cpp
+    main.cpp \
+    sortfilterproxymodel/sortfilterproxymodel.cpp
 
 RESOURCES += \
     kanban_board.qml \
@@ -65,4 +66,7 @@ TRANSLATIONS += \
 #INSTALLS += target
 
 HEADERS += \
-    kanbanApp.h
+    kanbanApp.h \
+    sortfilterproxymodel/sortfilterproxymodel.h
+
+DISTFILES +=

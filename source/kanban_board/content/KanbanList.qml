@@ -33,6 +33,8 @@ picture1: 'armrest " & A5 & "'
 picture2: 'armrest side " & A5 & "'
 picture3: 'cover " & A5 & "'
 picture4: 'extra " & A5 & "'
+pos: 0
+dateTime: ''
 }
 */
 
@@ -45,7 +47,7 @@ cardColor: '#0070C0'
 aliasColor: '#0070C0'
 clientRef: 'W76RA993XA'
 reference: '1346945XKW'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ЗАДНЯЯ ДВЕРНАЯ ПАНЕЛЬ ЛЕВАЯ  ХРОМИРОВАННАЯ РУЧКА ТЕКСТИЛЬНОЕ ПОКРЫТИЕ'
 company: 'Faurecia:'
@@ -54,6 +56,8 @@ picture1: 'armrest A993XA'
 picture2: 'armrest side A993XA'
 picture3: 'cover A993XA'
 picture4: 'extra A993XA'
+pos: 2
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 3
@@ -63,7 +67,7 @@ cardColor: '#FFFF00'
 aliasColor: '#FFFF00'
 clientRef: 'W76RA994XA'
 reference: '1346952XKW'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ЗАДНЯЯ ДВЕРНАЯ ПАНЕЛЬ ПРАВАЯ ХРОМИРОВАННАЯ РУЧКА ТЕКСТИЛЬНОЕ ПОКРЫТИЕ'
 company: 'Faurecia:'
@@ -72,6 +76,8 @@ picture1: 'armrest A994XA'
 picture2: 'armrest side A994XA'
 picture3: 'cover A994XA'
 picture4: 'extra A994XA'
+pos: 4
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 4
@@ -81,7 +87,7 @@ cardColor: '#0070C0'
 aliasColor: '#0070C0'
 clientRef: 'W76RA995XB'
 reference: '1946949XKW'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ЗАДНЯЯ ДВЕРНАЯ ПАНЕЛЬ ЛЕВАЯ  ХРОМИРОВАННАЯ РУЧКА КОЖАННОЕ ПОКРЫТИЕ'
 company: 'Faurecia:'
@@ -90,6 +96,8 @@ picture1: 'armrest A995XB'
 picture2: 'armrest side A995XB'
 picture3: 'cover A995XB'
 picture4: 'extra A995XB'
+pos: 2
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 5
@@ -99,7 +107,7 @@ cardColor: '#FFFF00'
 aliasColor: '#FFFF00'
 clientRef: 'W76RA996XB'
 reference: '1946951XKW'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ЗАДНЯЯ ДВЕРНАЯ ПАНЕЛЬ ПРАВАЯ  ХРОМИРОВАННАЯ РУЧКА КОЖАННОЕ ПОКРЫТИЕ'
 company: 'Faurecia:'
@@ -108,6 +116,8 @@ picture1: 'armrest A996XB'
 picture2: 'armrest side A996XB'
 picture3: 'cover A996XB'
 picture4: 'extra A996XB'
+pos: 4
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 6
@@ -117,7 +127,7 @@ cardColor: '#0070C0'
 aliasColor: '#0070C0'
 clientRef: 'W76RA997XA'
 reference: '1346941XKW'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ЗАДНЯЯ ДВЕРНАЯ ПАНЕЛЬ ЛЕВАЯ  ЧЁРНАЯ РУЧКА ТЕКСТИЛЬНОЕ ПОКРЫТИЕ'
 company: 'Faurecia:'
@@ -126,6 +136,8 @@ picture1: 'armrest A997XA'
 picture2: 'armrest side A997XA'
 picture3: 'cover A997XA'
 picture4: 'extra A997XA'
+pos: 2
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 7
@@ -135,7 +147,7 @@ cardColor: '#FFFF00'
 aliasColor: '#FFFF00'
 clientRef: 'W76RA998XA'
 reference: '1346953XKW'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ЗАДНЯЯ ДВЕРНАЯ ПАНЕЛЬ ПРАВАЯ ЧЁРНАЯ РУЧКА ТЕКСТИЛЬНОЕ ПОКРЫТИЕ'
 company: 'Faurecia:'
@@ -144,6 +156,8 @@ picture1: 'armrest A998XA'
 picture2: 'armrest side A998XA'
 picture3: 'cover A998XA'
 picture4: 'extra A998XA'
+pos: 4
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 8
@@ -153,7 +167,7 @@ cardColor: '#0070C0'
 aliasColor: '#0070C0'
 clientRef: 'W76QD586XA'
 reference: '1946910XKW'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ПЕРЕДНЯЯ ДВЕРНАЯ ПАНЕЛЬ ПРАВАЯ  ЧЁРНАЯ РУЧКА ТЕКСТИЛЬНОЕ ПОКРЫТИЕ ЧЁРНАЯ НАКЛАДКА'
 company: 'Faurecia:'
@@ -162,6 +176,8 @@ picture1: 'armrest D586'
 picture2: 'armrest side D586'
 picture3: 'cover D586'
 picture4: 'extra D586'
+pos: 1
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 9
@@ -171,7 +187,7 @@ cardColor: '#FFFF00'
 aliasColor: '#FFFF00'
 clientRef: 'W76QD585XA'
 reference: '1946893XKW'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ПЕРЕДНЯЯ ДВЕРНАЯ ПАНЕЛЬ ЛЕВАЯ  ЧЁРНАЯ РУЧКА ТЕКСТИЛЬНОЕ ПОКРЫТИЕ ЧЁРНАЯ НАКЛАДКА'
 company: 'Faurecia:'
@@ -180,6 +196,8 @@ picture1: 'armrest D585'
 picture2: 'armrest side D585'
 picture3: 'cover D585'
 picture4: 'extra D585'
+pos: 3
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 10
@@ -189,7 +207,7 @@ cardColor: '#FFFF00'
 aliasColor: '#FFFF00'
 clientRef: 'W76QD583XA'
 reference: '1956889XKW'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ПЕРЕДНЯЯ ДВЕРНАЯ ПАНЕЛЬ ЛЕВАЯ  ХРОМИРОВАННАЯ РУЧКА КОЖАННОЕ ПОКРЫТИЕ СЕРЕБРИСТАЯ НАКЛАДКА'
 company: 'Faurecia:'
@@ -198,6 +216,8 @@ picture1: 'armrest D583'
 picture2: 'armrest side D583'
 picture3: 'cover D583'
 picture4: 'extra D583'
+pos: 3
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 11
@@ -207,7 +227,7 @@ cardColor: '#0070C0'
 aliasColor: '#0070C0'
 clientRef: 'W76QD584XA'
 reference: '1946911XKW'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ПЕРЕДНЯЯ ДВЕРНАЯ ПАНЕЛЬ ПРАВАЯ  ХРОМИРОВАННАЯ РУЧКА КОЖАННОЕ ПОКРЫТИЕ СЕРЕБРИСТАЯ НАКЛАДКА'
 company: 'Faurecia:'
@@ -216,6 +236,8 @@ picture1: 'armrest D584'
 picture2: 'armrest side D584'
 picture3: 'cover D584'
 picture4: 'extra D584'
+pos: 1
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 12
@@ -225,7 +247,7 @@ cardColor: '#FFFF00'
 aliasColor: '#FFFF00'
 clientRef: 'W76QD757XA'
 reference: '1946892XKW'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ПЕРЕДНЯЯ ДВЕРНАЯ ПАНЕЛЬ ЛЕВАЯ  ХРОМИРОВАННАЯ РУЧКА ТЕКСТИЛЬНОЕ ПОКРЫТИЕ ЧЁРНАЯ НАКЛАДКА'
 company: 'Faurecia:'
@@ -234,6 +256,8 @@ picture1: 'armrest D757'
 picture2: 'armrest side D757'
 picture3: 'cover D757'
 picture4: 'extra D757'
+pos: 3
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 13
@@ -243,7 +267,7 @@ cardColor: '#0070C0'
 aliasColor: '#0070C0'
 clientRef: 'W76QD758XA'
 reference: '1946907XKW'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ПЕРЕДНЯЯ ДВЕРНАЯ ПАНЕЛЬ ПРАВАЯ  ХРОМИРОВАННАЯ РУЧКА ТЕКСТИЛЬНОЕ ПОКРЫТИЕ ЧЁРНАЯ НАКЛАДКА'
 company: 'Faurecia:'
@@ -252,6 +276,8 @@ picture1: 'armrest D758'
 picture2: 'armrest side D758'
 picture3: 'cover D758'
 picture4: 'extra D758'
+pos: 1
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 14
@@ -261,7 +287,7 @@ cardColor: '#FFFF00'
 aliasColor: '#FCD5B4'
 clientRef: 'W76QD583YA'
 reference: '1955889XBE'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ПЕРЕДНЯЯ мод. год 19.5 ДВЕРНАЯ ПАНЕЛЬ ЛЕВАЯ  ХРОМИРОВАННАЯ РУЧКА КОЖАННОЕ ПОКРЫТИЕ СЕРЕБРИСТАЯ НАКЛАДКА'
 company: 'Faurecia:'
@@ -270,6 +296,8 @@ picture1: 'armrest 83 YA'
 picture2: 'armrest side 83 YA'
 picture3: 'cover 83 YA'
 picture4: 'extra 83 YA'
+pos: 3
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 15
@@ -279,7 +307,7 @@ cardColor: '#0070C0'
 aliasColor: '#FCD5B4'
 clientRef: 'W76QD584YA'
 reference: '1956911XBE'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ПЕРЕДНЯЯ мод. год 19.5 ДВЕРНАЯ ПАНЕЛЬ ПРАВАЯ  ХРОМИРОВАННАЯ РУЧКА КОЖАННОЕ ПОКРЫТИЕ СЕРЕБРИСТАЯ НАКЛАДКА'
 company: 'Faurecia:'
@@ -288,6 +316,8 @@ picture1: 'armrest 84 YA'
 picture2: 'armrest side 84 YA'
 picture3: 'cover 84 YA'
 picture4: 'extra 84 YA'
+pos: 1
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 16
@@ -297,7 +327,7 @@ cardColor: '#0070C0'
 aliasColor: '#FABF8F'
 clientRef: 'W76RA995YA'
 reference: '1956949XBE'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ЗАДНЯЯ мод. год 19.5 ДВЕРНАЯ ПАНЕЛЬ ЛЕВАЯ  ХРОМИРОВАННАЯ РУЧКА КОЖАННОЕ ПОКРЫТИЕ'
 company: 'Faurecia:'
@@ -306,6 +336,8 @@ picture1: 'armrest 95 YA'
 picture2: 'armrest side 95 YA'
 picture3: 'cover 95 YA'
 picture4: 'extra 95 YA'
+pos: 2
+dateTime: ''
 }
 ListElement {
 kanbanIndex: 17
@@ -315,7 +347,7 @@ cardColor: '#FFFF00'
 aliasColor: '#FABF8F'
 clientRef: 'W76RA996YA'
 reference: '1956951XBE'
-count: 5
+count: 0
 project: 'DP 4B45X'
 alias: 'ЗАДНЯЯ мод. год 19.5 ДВЕРНАЯ ПАНЕЛЬ ПРАВАЯ  ХРОМИРОВАННАЯ РУЧКА КОЖАННОЕ ПОКРЫТИЕ'
 company: 'Faurecia:'
@@ -324,5 +356,7 @@ picture1: 'armrest 96 YA'
 picture2: 'armrest side 96 YA'
 picture3: 'cover 96 YA'
 picture4: 'extra 96 YA'
+pos: 4
+dateTime: ''
 }
 }

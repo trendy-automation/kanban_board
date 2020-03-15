@@ -9,6 +9,8 @@
 #include <QFontDatabase>
 #include <QQmlContext>
 #include <QSettings>
+#include <QtQml/qqml.h>
+#include "sortfilterproxymodel/sortfilterproxymodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -23,6 +25,7 @@ int main(int argc, char *argv[])
     app.setOrganizationName("Faurecia");
     app.setOrganizationDomain("Dryer");
     MessageHandler *msgHandler = new MessageHandler;
+    qmlRegisterType<SortFilterProxyModel>("org.qtproject.example", 1, 0, "SortFilterProxyModel");
     bool ok;
     QString FileName("settings.ini");
     QSettings settings(FileName, QSettings::IniFormat);
@@ -58,12 +61,12 @@ int main(int argc, char *argv[])
     context->setContextProperty("kanbanCount", KANBAN_COUNT);
     engine.load(QUrl("qrc:/kanban_board.qml"));
     qDebug()<<"plcPartner status:"<<plcPartner->getStatus()<<plcStatusList.at(plcPartner->getStatus());
-    emit kanbanApp.kanbanProduced(14);
-    emit kanbanApp.kanbanProduced(14);
-    emit kanbanApp.kanbanProduced(14);
-    emit kanbanApp.kanbanProduced(13);
-    emit kanbanApp.kanbanProduced(13);
-    emit kanbanApp.kanbanProduced(15);
+//    emit kanbanApp.kanbanProduced(14);
+//    emit kanbanApp.kanbanProduced(14);
+//    emit kanbanApp.kanbanProduced(14);
+//    emit kanbanApp.kanbanProduced(13);
+//    emit kanbanApp.kanbanProduced(13);
+//    emit kanbanApp.kanbanProduced(15);
     if (engine.rootObjects().isEmpty())
         return -1;
 
